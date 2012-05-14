@@ -567,8 +567,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			navigation.nextTitle = VMM.appendAndGetElement(navigation.nextBtnContainer, "<div>", "title", "Title Goes Here");
 			navigation.prevTitle = VMM.appendAndGetElement(navigation.prevBtnContainer, "<div>", "title", "Title Goes Here");
 			
-			VMM.bindEvent(".nav-next", onNextClick);
-			VMM.bindEvent(".nav-previous", onPrevClick);
+			VMM.bindEvent(jQuery(".nav-next", layout), onNextClick);
+			VMM.bindEvent(jQuery(".nav-previous", layout), onPrevClick);
 			VMM.bindEvent(window, onKeypressNav, 'keydown');
 		}
 		
@@ -580,7 +580,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 			VMM.attachElement(layout, "");
 			
 			// Get DOM Objects to local objects
-			$slider = VMM.getElement("div.slider");
+			$slider = layout;
 			$slider_mask = VMM.appendAndGetElement($slider, "<div>", "slider-container-mask");
 			$slider_container = VMM.appendAndGetElement($slider_mask, "<div>", "slider-container");
 			$slides_items = VMM.appendAndGetElement($slider_container, "<div>", "slider-item-container");

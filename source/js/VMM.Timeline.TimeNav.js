@@ -908,7 +908,7 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 			
 			if (config.start_page) {
 				$backhome = VMM.appendAndGetElement($toolbar, "<div>", "back-home", "<div class='icon'></div>");
-				VMM.bindEvent(".back-home", onBackHome, "click");
+				VMM.bindEvent(jQuery(".back-home", layout), onBackHome, "click");
 				VMM.Lib.css($toolbar, "top", 27);
 				VMM.Lib.attribute($backhome, "title", VMM.Timeline.Config.language.messages.return_to_title);
 				VMM.Lib.attribute($backhome, "rel", "tooltip");
@@ -934,8 +934,8 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 			}
 			
 			
-			VMM.bindEvent(".zoom-in", onZoomIn, "click");
-			VMM.bindEvent(".zoom-out", onZoomOut, "click");
+			VMM.bindEvent(jQuery(".zoom-in", layout), onZoomIn, "click");
+			VMM.bindEvent(jQuery(".zoom-out", layout), onZoomOut, "click");
 			VMM.fireEvent(layout, "LOADED");
 			_active = true;
 			

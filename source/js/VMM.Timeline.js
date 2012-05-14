@@ -57,6 +57,8 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 		
 		if (type.of(_timeline_id) == "string") {
 			timeline_id = 			_timeline_id;
+		} else if (type.of(_timeline_id) == "html") {
+			$timeline = _timeline_id;
 		} else {
 			timeline_id = 			"#timeline";
 		}
@@ -192,14 +194,10 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 		/* CREATE TIMELINE STRUCTURE
 		================================================== */
 		var createStructure = function(w, h) {
-			$timeline = 			VMM.getElement(timeline_id);
-			
-			VMM.Lib.addClass(timeline_id, "vmm-timeline");
+			VMM.Lib.addClass($timeline, "vmm-timeline");
 			
 			$feedback = 			VMM.appendAndGetElement($timeline, "<div>", "feedback", "");
 			$messege = 				VMM.appendAndGetElement($feedback, "<div>", "messege", "Timeline");
-			slider = 				new VMM.Slider(timeline_id + " div.slider", config);
-			timenav = 				new VMM.Timeline.TimeNav(timeline_id + " div.navigation");
 			
 			if (!has_width) {
 				config.width = VMM.Lib.width($timeline);
@@ -298,6 +296,9 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 				} else {
 					timeline_id = "#" + _timeline_id;
 				}
+				$timeline = VMM.getElement(timeline_id);
+			} else if (type.of(_timeline_id) == "html") {
+				$timeline = _timeline_id;
 			}
 			
 			createConfig(conf);
@@ -323,7 +324,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 					trace("GET DATA 1")
 					VMM.Timeline.DataObj.getData(_data);
 				} else {
-					VMM.Timeline.DataObj.getData(VMM.getElement(timeline_id));
+					VMM.Timeline.DataObj.getData($timeline);
 				}
 			}
 			
@@ -369,13 +370,15 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 			// CREATE DOM STRUCTURE
 			VMM.attachElement($timeline, "");
 			VMM.appendElement($timeline, "<div class='container main'><div class='feature'><div class='slider'></div></div><div class='navigation'></div></div>");
+			slider = 				  new VMM.Slider(jQuery("div.slider", $timeline), config);
+			timenav = 				new VMM.Timeline.TimeNav(jQuery("div.navigation", $timeline));
 			
 			reSize();
 			
-			VMM.bindEvent("div.slider", onSliderLoaded, "LOADED");
-			VMM.bindEvent("div.navigation", onTimeNavLoaded, "LOADED");
-			VMM.bindEvent("div.slider", onSlideUpdate, "UPDATE");
-			VMM.bindEvent("div.navigation", onMarkerUpdate, "UPDATE");
+			VMM.bindEvent(jQuery("div.slider", $timeline), onSliderLoaded, "LOADED");
+			VMM.bindEvent(jQuery("div.navigation", $timeline), onTimeNavLoaded, "LOADED");
+			VMM.bindEvent(jQuery("div.slider", $timeline), onSlideUpdate, "UPDATE");
+			VMM.bindEvent(jQuery("div.navigation", $timeline), onMarkerUpdate, "UPDATE");
 			
 			slider.init(_dates);
 			timenav.init(_dates, data.era);
