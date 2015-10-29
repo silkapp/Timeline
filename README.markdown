@@ -1,4 +1,4 @@
-# Timeline 
+# Timeline
 ## Document history with Timeline
 
 There are lots of timeline tools on the web but they are almost all either
@@ -34,35 +34,35 @@ Place the embed code where you want the timeline to show in the `<body>` of your
 	</script>
 	<script type="text/javascript" src="path_to_js/timeline-embed.js"></script>
 ```
-	
+
 ## Options
 
-###Start at End 
+###Start at End
 `start_at_end`
 set to true to start the timeline on the last date.
 *default is false*
-	
-###Hash Bookmark 
+
+###Hash Bookmark
 `hash_bookmark`
 set to true to allow bookmarking slides using the hash tag
 *default is false*
 
-###Map Style Types 
+###Map Style Types
 `maptype:`
-* [Stamen Maps ](maps.stamen.com)
+* [Stamen Maps ](https://github.com/stamen/maps.stamen.com)
 	* `toner`
 	* `toner-lines`
 	* `toner-labels`
 	* `watercolor`
 	* `sterrain`
-		
+
 * Google Maps
 	* `ROADMAP`
 	* `TERRAIN`
 	* `HYBRID`
 	* `SATELLITE`
 
-###Font Options 
+###Font Options
 `font:`
 * `Arvo-PTSans`
 * `Merriweather-NewsCycle`
@@ -78,7 +78,7 @@ set to true to allow bookmarking slides using the hash tag
 * `BreeSerif-OpenSans`
 * `SansitaOne-Kameron`
 * `Pacifico-Arimo`
-* Or make your own 
+* Or make your own
 
 ## File Formats
 
@@ -106,7 +106,7 @@ using Google Docs:
 	Google Docs are automatically set to private but the spreadsheet must be
 	public.
 
-  
+
 	Click the blue “Share” button on the top right-hand corner. In the “Share
 	settings” window, you’ll see the private setting of the spreadsheet: click
 	“Change...”. In the Visibility options window, choose “Public on the Web” and
@@ -115,7 +115,7 @@ using Google Docs:
   2. Publish to the Web  
 	Under the File menu, select “Publish to the Web.”
 
-  
+
 	In the next window, check the box next to “Automatically republish when
 	changes are made.” Uncheck all other boxes. Click “start publishing.” This
 	will give you the URL to embed in your HTML file.
@@ -125,14 +125,14 @@ using Google Docs:
 	file. Copy the link for the Web Page option (as opposed to PDF, HTML, XLS,
 	etc.), then paste it into the timeline’s HTML file:
 
-  
+
 	`timeline.init(“URL goes here”)`
 
   4. Designate the “start” slide  
 	This indicates which event is the title slide, the one that begins the
 	timeline.
 
-  
+
 	Only one should be labeled "start" (generally, the first one). The title slide
 	must have a start date, headline and text to appear properly.
 
